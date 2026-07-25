@@ -20,7 +20,11 @@ description: >-
   over ACORD Solutions Group's ADEPT gateway with retail insurer partner Hiscox.
   None of that surface is self-serve, documented publicly, or accompanied by a
   downloadable OpenAPI definition. The only public web surfaces are marketing
-  pages and login walls.
+  pages and login walls. Howden does publish two real machine-readable web
+  artifacts — an RFC 9116 security.txt at www.howdengroup.com naming
+  security@howdengrp.com, and an llms.txt overview blurb mirrored across the
+  Howden Re and DUAL brands — plus a robots.txt Content-Signal directive
+  permitting AI training, search and AI input use of its public content.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
@@ -48,6 +52,36 @@ common:
   url: https://parentportal.howdengroup.com/
 - type: LinkedIn
   url: https://www.linkedin.com/company/howden-broking-insurance
+- type: Blog
+  url: https://www.howdengroup.com/uk-en/news-insights
+- type: Support
+  url: https://www.howdengroup.com/uk-en/contact-us
+- type: TermsOfService
+  url: https://www.howdengroup.com/howden-terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.howdengroup.com/howden-privacy-data-protection-policy
+- type: CookiePolicy
+  url: https://www.howdengroup.com/cookie-policy
+- type: Complaints
+  url: https://www.howdengroup.com/complaints-procedure
+- type: Careers
+  url: https://www.howdengroup.com/uk-en/careers
+- type: Security
+  url: https://www.howdengroup.com/.well-known/security.txt
+- type: SecurityTxt
+  url: well-known/howden-group-security.txt
+- type: WellKnown
+  url: well-known/howden-group-well-known.yml
+- type: ContentSignal
+  url: well-known/howden-group-robots.txt
+- type: LLMsTxt
+  url: llms/howden-group-llms.txt
+- type: Conformance
+  url: conformance/howden-group-conformance.yml
+- type: VulnerabilityDisclosure
+  url: security/howden-group-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/howden-group-domain-security.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,136 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of Howden Group web hosts, 2026-07-25
+note: >-
+  Howden Group publishes no API host, so the /.well-known/ surface was probed
+  against the corporate marketing hosts, the client login wall
+  (parentportal.howdengroup.com), the HowdenCAP Tepfin X placement application
+  (tepfinx.com) and the sibling DUAL / Howden Re brands. Two real documents
+  exist: an RFC 9116 security.txt on www.howdengroup.com (mirrored on
+  www.howdenre.com with the same canonical) and a robots.txt carrying an AI
+  preference Content-Signal directive. No OAuth/OIDC discovery, no API catalog
+  and no ai-plugin manifest is served anywhere. Hosts marked soft_404 return
+  HTTP 200 with content-type text/html and a SPA/CMS shell body, not a document.
+hosts:
+- host: https://www.howdengroup.com
+  role: corporate marketing site (primary)
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: howden-group-security.txt
+    standard: RFC 9116
+  - path: /robots.txt
+    status: 200
+    content_type: text/plain
+    file: howden-group-robots.txt
+    standard: robots.txt + Content-Signal (AI preference)
+    note: 'User-agent: * carries "Content-Signal: ai-train=yes, search=yes, ai-input=yes"'
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    file: ../llms/howden-group-llms.txt
+- host: https://www.howdenre.com
+  role: Howden Re — specialty and reinsurance broking brand
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    note: byte-identical to www.howdengroup.com; Canonical points back to the group host
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    note: byte-identical to the group llms.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://www.dualinsurance.com
+  role: DUAL — managing general agency underwriting brand
+  documents:
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    note: DUAL-specific overview blurb; not saved (sibling brand, separate identity)
+  - path: /robots.txt
+    status: 200
+    note: same Content-Signal directive as the group host
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://parentportal.howdengroup.com
+  role: Howden Insurance Portal — client/broker login wall
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    soft_404: true
+    note: content-type text/html; SPA shell, not a security.txt
+  - path: /.well-known/openid-configuration
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    soft_404: true
+  - path: /.well-known/api-catalog
+    status: 200
+    soft_404: true
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    soft_404: true
+- host: https://tepfinx.com
+  role: HowdenCAP Tepfin X structured credit placement application (partner access)
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    soft_404: true
+    note: content-type text/html; JS application shell
+  - path: /.well-known/openid-configuration
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    soft_404: true
+  - path: /.well-known/api-catalog
+    status: 200
+    soft_404: true
+- host: https://api.tepfinx.com
+  role: probed on the chance an API host exists behind Tepfin X
+  documents:
+  - path: /openapi.json
+    status: 0
+    note: DNS does not resolve
+security_txt:
+  canonical: https://www.howdengroup.com/.well-known/security.txt
+  contact: mailto:security@howdengrp.com
+  expires: '2027-05-13T00:00:00Z'
+  preferred_languages: en
+  encryption: null
+  policy: null
+  acknowledgments: null
+content_signal:
+  source: https://www.howdengroup.com/robots.txt
+  directive: 'ai-train=yes, search=yes, ai-input=yes'
+  applies_to: 'User-agent: *'
+  note: >-
+    Howden explicitly permits AI training, search indexing and AI input use of
+    its public content. Same directive on www.dualinsurance.com.

@@ -1,0 +1,4 @@
+Canonical: https://www.howdengroup.com/.well-known/security.txt
+Contact: mailto:security@howdengrp.com
+Expires: 2027-05-13T00:00:00Z
+Preferred-Languages: en

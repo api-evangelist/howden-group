@@ -1,0 +1,145 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  ACORD announcements + Howden press releases + live probes of Howden hosts
+  (2026-07-25); no OpenAPI exists in this repo to derive from
+note: >-
+  Howden Group publishes no public API and no machine-readable API contract, so
+  none of the API-shaped standards below can be asserted. What Howden does
+  conform to is real but sits at the messaging and market-infrastructure layer:
+  ACORD GRLC digital accounting and invoicing standards, live in production over
+  ACORD Solutions Group's ADEPT gateway with retail insurer partner Hiscox since
+  July 2025, plus web-layer standards (RFC 9116 security.txt, SPF, DMARC,
+  Content-Signal). Every "conforms: false" below is an observed absence, not an
+  assumption.
+standards:
+- id: acord-grlc
+  name: ACORD GRLC (Global Reinsurance & Large Commercial) Standards
+  conforms: true
+  scope: digital accounting and invoicing messaging
+  evidence: >-
+    ACORD announcement 3 July 2025 — ACORD Standards for digital accounting and
+    invoicing live and operational with Howden in the UK retail insurance
+    market; first use of ACORD digital accounting standards in the UK outside
+    the specialty and (re)insurance market.
+  source: https://www.acord.org/ACORD-about/acord-news/2025/07/03/acord-and-howden-pioneer-the-adoption-of-digital-invoicing-standards-in-the-uk-retail-insurance-market
+- id: acord-adept
+  name: ACORD Solutions Group ADEPT (ACORD Data Exchange Platform & Translator)
+  conforms: true
+  scope: messaging gateway and receiver portal
+  evidence: >-
+    Howden operationalised ACORD GRLC digital invoicing over ADEPT, with Hiscox
+    responding to Howden's digital invoices in real time through the ADEPT
+    receiver portal. ADEPT is cloud-native and supports both XML and JSON
+    messaging over API architecture. Howden does not publish its ADEPT endpoints.
+  source: https://www.reinsurancene.ws/acord-and-howden-partner-to-enhance-digital-accounting-and-invoicing-standards/
+- id: acord-al3
+  name: ACORD AL3
+  conforms: false
+  evidence: >-
+    No AL3 usage found. AL3 is a US personal/commercial-lines agency download
+    format; Howden's UK and specialty footprint uses ACORD XML/GRLC instead.
+- id: lloyds-blueprint-two
+  name: Lloyd's Blueprint Two / Core Data Record
+  conforms: partial
+  scope: London market participation, not a Howden-published interface
+  evidence: >-
+    Howden (RKH Specialty) participated in Lloyd's closed Beta Group refining
+    the Core Data Record under Blueprint Two. Market infrastructure aimed at
+    brokers and syndicates; produces no public Howden API surface.
+- id: ppl-whitespace-placement
+  name: Digital placement (PPL / Whitespace)
+  conforms: partial
+  scope: electronic placement participation
+  evidence: >-
+    Howden partnered with Whitespace for digital placement. Market platform
+    integration, not a Howden-published API.
+- id: rfc9116-security-txt
+  name: RFC 9116 — A File Format to Aid in Security Vulnerability Disclosure
+  conforms: true
+  evidence: >-
+    https://www.howdengroup.com/.well-known/security.txt returns HTTP 200
+    text/plain with Canonical, Contact (mailto:security@howdengrp.com), Expires
+    (2027-05-13) and Preferred-Languages fields. Mirrored on www.howdenre.com.
+  source: well-known/howden-group-security.txt
+- id: content-signal
+  name: Content-Signal / AI preference expression in robots.txt
+  conforms: true
+  evidence: >-
+    robots.txt carries "Content-Signal: ai-train=yes, search=yes, ai-input=yes"
+    under User-agent: *. Same directive on www.dualinsurance.com.
+  source: well-known/howden-group-robots.txt
+- id: rfc7208-spf
+  name: RFC 7208 — Sender Policy Framework
+  conforms: true
+  evidence: SPF record present on howdengroup.com (live DNS probe).
+  source: security/howden-group-domain-security.yml
+- id: rfc7489-dmarc
+  name: RFC 7489 — DMARC
+  conforms: true
+  evidence: DMARC record present on howdengroup.com with policy p=reject.
+  source: security/howden-group-domain-security.yml
+- id: rfc6797-hsts
+  name: RFC 6797 — HTTP Strict Transport Security
+  conforms: partial
+  evidence: >-
+    parentportal.howdengroup.com sends HSTS with max-age=31536000;
+    www.howdengroup.com does not send an HSTS header.
+  source: security/howden-group-domain-security.yml
+- id: dnssec
+  name: DNSSEC
+  conforms: false
+  evidence: howdengroup.com is not DNSSEC-signed (live DNS probe).
+- id: caa
+  name: DNS CAA records (RFC 8659)
+  conforms: false
+  evidence: No CAA records published for howdengroup.com.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    /openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json and /api-docs
+    probed against www.howdengroup.com, howdengroup.com,
+    parentportal.howdengroup.com, tepfinx.com, api.tepfinx.com,
+    developer.dualinsurance.com, api.dualinsurance.com, www.dualinsurance.com
+    and www.howdenre.com. Every HTTP 200 served text/html SPA/CMS shells; no
+    document parses as OpenAPI or Swagger.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No event catalog, webhook documentation or AsyncAPI definition found.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: /graphql probed on every Howden host — 404 or HTML soft-404 only.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No /.well-known/oauth-authorization-server or
+    /.well-known/oauth-protected-resource document served on any Howden host.
+    Partner API credentials for Tepfin X and ADEPT are issued under bilateral
+    contract, not documented publicly.
+- id: oidc
+  name: OpenID Connect Discovery
+  conforms: false
+  evidence: >-
+    /.well-known/openid-configuration returns 404 on www.howdengroup.com and an
+    HTML soft-404 on parentportal.howdengroup.com and tepfinx.com.
+- id: rfc9457-problem-details
+  name: RFC 9457 — Problem Details for HTTP APIs
+  conforms: false
+  evidence: Not applicable — no public HTTP API surface to carry problem details.
+- id: mcp
+  name: Model Context Protocol
+  conforms: false
+  evidence: No hosted MCP server found; no /.well-known/mcp or tools/list surface.
+compliance_program:
+  published: false
+  note: >-
+    No trust center, certifications page or published compliance program found.
+    trust.howdengroup.com and security.howdengroup.com do not resolve; no
+    /trust, /security or /compliance page exists on www.howdengroup.com. A
+    vendor case study references an ISO 27001 ISMS programme at the legacy
+    Hyperion group, but Howden publishes no certification statement of its own,
+    so no Compliance pointer is emitted.

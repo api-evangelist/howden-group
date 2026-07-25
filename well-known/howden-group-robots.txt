@@ -1,0 +1,128 @@
+#
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts
+# of your site by web crawlers and spiders run by sites like Yahoo!
+# and Google. By telling these "robots" where not to go on your site,
+# you save bandwidth and server resources.
+#
+# This file will be ignored unless it is at the root of your host:
+# Used:    http://example.com/robots.txt
+# Ignored: http://example.com/site/robots.txt
+#
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+# CSS, JS, Images
+Allow: /core/*.css$
+Allow: /core/*.css?
+Allow: /core/*.js$
+Allow: /core/*.js?
+Allow: /core/*.gif
+Allow: /core/*.jpg
+Allow: /core/*.jpeg
+Allow: /core/*.png
+Allow: /core/*.svg
+Allow: /profiles/*.css$
+Allow: /profiles/*.css?
+Allow: /profiles/*.js$
+Allow: /profiles/*.js?
+Allow: /profiles/*.gif
+Allow: /profiles/*.jpg
+Allow: /profiles/*.jpeg
+Allow: /profiles/*.png
+Allow: /profiles/*.svg
+
+# Sitemap index
+Sitemap: https://www.howdengroup.com/sitemap_index.xml
+Sitemap: https://www.dualinsurance.com/sitemap_index.xml
+# Individual sitemap.
+Sitemap: https://www.howdengroupholdings.com/sitemap.xml
+Sitemap: https://www.howdenfoundation.com/sitemap.xml
+Sitemap: https://www.dualgroup.com/sitemap.xml
+Sitemap: https://privatewealth.howdengroup.com/sitemap.xml
+Sitemap: https://www.howdenre.com/sitemap.xml
+Sitemap: https://www.howdencma.com/sitemap.xml
+
+# Directories
+Disallow: /core/
+Disallow: /profiles/
+# Files
+Disallow: /README.md
+Disallow: /composer/Metapackage/README.txt
+Disallow: /composer/Plugin/ProjectMessage/README.md
+Disallow: /composer/Plugin/Scaffold/README.md
+Disallow: /composer/Plugin/VendorHardening/README.txt
+Disallow: /composer/Template/README.txt
+Disallow: /modules/README.txt
+Disallow: /sites/README.txt
+Disallow: /themes/README.txt
+Disallow: /web.config
+# Paths (clean URLs)
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips
+Disallow: /node/add/
+Disallow: /search/
+Disallow: /user/register
+Disallow: /user/password
+Disallow: /user/login
+Disallow: /user/logout
+Disallow: /media/oembed
+Disallow: /*/media/oembed
+# Paths (no clean URLs)
+Disallow: /index.php/admin/
+Disallow: /index.php/comment/reply/
+Disallow: /index.php/filter/tips
+Disallow: /index.php/node/add/
+Disallow: /index.php/search/
+Disallow: /index.php/user/password
+Disallow: /index.php/user/register
+Disallow: /index.php/user/login
+Disallow: /index.php/user/logout
+Disallow: /index.php/media/oembed
+Disallow: /index.php/*/media/oembed
+
+# For multi-language sites
+# Paths (clean URLs)
+Disallow: /*/user/register
+Disallow: /*/user/password
+Disallow: /*/user/login
+# Paths (no clean URLs)
+Disallow: /*/?q=user/password
+Disallow: /*/?q=user/register
+Disallow: /*/?q=user/login
+
+# Geolocation query
+Disallow: /*?geoLocationActioned=yes
+Disallow: /*?option=com_user&task=register
+
+# private document
+Disallow: /*Howden-climate-in-peril-report-20211015-final.pdf
+
+# Thank you page
+Disallow: /thank-you
+Disallow: /*/thank-you
+
+# TASK-503: Excluding below query parameters.
+Disallow: /*?__hstc
+Disallow: /*?__hsfp
+Disallow: /*?dm_i
+Disallow: /*?SelectedRegionId
+Disallow: /*?vacancyId
+Disallow: /*?LinkSource
+
+# Antibot page
+Disallow: /antibot
+Disallow: /*/antibot
+
+# Latest revisions
+Disallow: /node/*/latest
+Disallow: /*/node/*/latest
+
+# Document directory for non indexing.
+Disallow: /sites/*/files/private-files/
+
+Disallow: /rkqy*

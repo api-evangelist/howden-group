@@ -107,6 +107,33 @@ findings:
   - url: https://parentportal.howdengroup.com/.well-known/openid-configuration
     status: 200
     note: HTML soft-404 (content-type text/html), not an OIDC document.
+  - url: https://www.howdengroup.com/.well-known/security.txt
+    status: 200
+    note: REAL RFC 9116 security.txt (text/plain). Canonical + Contact
+      mailto:security@howdengrp.com + Expires 2027-05-13 + Preferred-Languages en.
+      Byte-identical copy served on www.howdenre.com. Saved verbatim to
+      well-known/howden-group-security.txt.
+  - url: https://www.howdengroup.com/llms.txt
+    status: 200
+    note: REAL llms.txt (text/plain, 346 bytes) — a short Howden Insurance
+      overview blurb, no link sections. Mirrored byte-identically on
+      www.howdenre.com; DUAL serves its own variant at
+      www.dualinsurance.com/llms.txt. Saved verbatim to
+      llms/howden-group-llms.txt.
+  - url: https://www.howdengroup.com/robots.txt
+    status: 200
+    note: Carries an AI preference directive — "Content-Signal - ai-train=yes,
+      search=yes, ai-input=yes" under User-agent - *. Saved verbatim to
+      well-known/howden-group-robots.txt.
+  - url: https://howdengroup.statuspage.io/
+    status: 200
+    note: Not a Howden status page — redirects to atlassian.com/software/statuspage
+      marketing. status.howdengroup.com, status.tepfinx.com,
+      trust.howdengroup.com and security.howdengroup.com all fail DNS. No status
+      page and no trust center exist.
+  - url: https://api.tepfinx.com/openapi.json
+    status: 000
+    note: DNS does not resolve. No API host sits behind the Tepfin X application.
   specHunt:
     harvested: 0
     note: |
