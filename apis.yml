@@ -1,0 +1,53 @@
+aid: howden-group
+url: https://raw.githubusercontent.com/api-evangelist/howden-group/refs/heads/main/apis.yml
+name: Howden Group
+kind: company
+description: >-
+  Howden Group Holdings is a London-headquartered, employee-owned international
+  insurance intermediary founded in 1994, operating across retail insurance
+  broking (Howden), specialty and reinsurance broking (Howden Re / Howden
+  Specialty), and managing general agency underwriting (DUAL). Its home market
+  is the United Kingdom and the Lloyd's of London subscription market, with
+  lines of business spanning property and casualty, specialty, credit and
+  political risk, marine, cyber, employee benefits, and reinsurance. Howden's
+  API posture is partner-gated and honestly recorded as such: no developer
+  subdomain resolves (developer/developers/docs/api.howdengroup.com all fail
+  DNS) and no /developers, /api or /partners path exists on howdengroup.com.
+  What Howden does operate is real but private broker-to-carrier integration —
+  HowdenCAP's Tepfin X structured credit placement application holds direct
+  bilateral APIs with insurers (Allianz Trade, AXA XL, Mosaic), and in July 2025
+  Howden went live with ACORD GRLC digital accounting and invoicing standards
+  over ACORD Solutions Group's ADEPT gateway with retail insurer partner Hiscox.
+  None of that surface is self-serve, documented publicly, or accompanied by a
+  downloadable OpenAPI definition. The only public web surfaces are marketing
+  pages and login walls.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- United Kingdom
+- Broker
+- Insurance Broking
+- Reinsurance
+- Specialty Insurance
+- Managing General Agent
+- Employee Benefits
+- Credit Insurance
+- London Market
+- ACORD
+- Partner Gated
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.howdengroup.com/uk-en
+- type: About
+  url: https://www.howdengroup.com/uk-en/about-us
+- type: Portal
+  url: https://parentportal.howdengroup.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/howden-broking-insurance
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

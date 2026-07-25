@@ -1,0 +1,269 @@
+aid: howden-group
+name: Howden Group
+review:
+  question: Does Howden Group expose a real, self-serve public developer portal or
+    any downloadable API definitions?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: United Kingdom
+  tier: broker-intermediary
+  gated: true
+findings:
+  summary: |
+    Howden Group Holdings publishes NO public, self-serve developer portal and
+    NO downloadable API definition of any kind. Every conventional developer
+    host was probed on 2026-07-25 and none resolves: developer.howdengroup.com,
+    developers.howdengroup.com, docs.howdengroup.com and api.howdengroup.com
+    all fail DNS resolution (curl exit code 6, HTTP 000). Every conventional
+    developer path on the corporate site returns HTTP 404:
+    /developers, /api, /developer, /partners, /integrations.
+
+    The only authenticated surfaces found are login walls, not developer
+    portals. parentportal.howdengroup.com returns HTTP 200 with the bare title
+    "Howden Insurance Portal" — a client/broker sign-in application with no
+    reference documentation. tepfinx.com returns HTTP 200 as a JavaScript
+    application shell titled "Tepfin-X" (HowdenCAP's structured credit
+    placement platform) with no docs, no sign-up, and no API reference in the
+    served HTML. Under the sibling DUAL brand, developer.dualinsurance.com and
+    api.dualinsurance.com both resolve and return HTTP 200 but serve the cPanel
+    /cgi-sys/defaultwebpage.cgi placeholder — parked hostnames, not portals.
+
+    Howden's real integration work is genuine but bilateral and invisible from
+    the outside. HowdenCAP markets itself as "the only broker in the London
+    structured credit insurance market to have direct APIs with insurers,"
+    connecting Tepfin X to carrier underwriting platforms one partner at a time
+    (Allianz Trade, October 2022; AXA XL; Mosaic Insurance). Those APIs carry
+    "presentation, negotiation, binding and management of credit insurance
+    contracts" but are contracted partner integrations with no public
+    documentation, no endpoints, and no specification published anywhere.
+
+    Howden also sits inside the London market's modernization programme —
+    Howden (RKH Specialty) participated in Lloyd's closed Beta Group refining
+    the Core Data Record under Blueprint Two, and Howden partnered with
+    Whitespace for digital placement — but Blueprint Two, PPL and Whitespace
+    are market infrastructure aimed at brokers and syndicates, not at
+    developers, so none of it produces a public Howden API surface.
+
+    This is a correct and expected outcome for a UK broker-intermediary. The
+    UK has an FCA and a PRA but no open-insurance obligation; the FCA's Open
+    Finance work remains consultation, not rule. Recording the absence
+    accurately is the finding.
+  developerPortal:
+    exists: false
+    url: ''
+    confirmed: false
+    kind: none
+    note: No self-serve developer portal. Closest surfaces are a client login
+      wall (parentportal.howdengroup.com) and a partner placement application
+      (tepfinx.com).
+  probes:
+  - url: https://howdengroup.com
+    status: 200
+    note: Redirects to https://www.howdengroup.com/us-en — corporate marketing site.
+  - url: https://www.howdengroup.com/uk-en
+    status: 200
+    note: UK home market landing page.
+  - url: https://developer.howdengroup.com
+    status: 000
+    note: DNS does not resolve.
+  - url: https://developers.howdengroup.com
+    status: 000
+    note: DNS does not resolve.
+  - url: https://docs.howdengroup.com
+    status: 000
+    note: DNS does not resolve.
+  - url: https://api.howdengroup.com
+    status: 000
+    note: DNS does not resolve.
+  - url: https://www.howdengroup.com/developers
+    status: 404
+  - url: https://www.howdengroup.com/api
+    status: 404
+  - url: https://www.howdengroup.com/developer
+    status: 404
+  - url: https://www.howdengroup.com/partners
+    status: 404
+  - url: https://www.howdengroup.com/integrations
+    status: 404
+  - url: https://parentportal.howdengroup.com/
+    status: 200
+    note: Login wall titled "Howden Insurance Portal". Not a developer portal.
+      All spec paths under this host return HTML soft-404s.
+  - url: https://tepfinx.com/
+    status: 200
+    note: HowdenCAP Tepfin X placement application; JS shell titled "Tepfin-X",
+      no documentation served. Partner/client access only.
+  - url: https://developer.dualinsurance.com/
+    status: 200
+    note: Sibling DUAL brand. Serves cPanel /cgi-sys/defaultwebpage.cgi
+      placeholder — parked host, no portal.
+  - url: https://api.dualinsurance.com/
+    status: 200
+    note: Sibling DUAL brand. Serves cPanel default placeholder — parked host.
+  - url: https://www.howdengroup.com/.well-known/openid-configuration
+    status: 404
+    note: No OIDC discovery document served.
+  - url: https://parentportal.howdengroup.com/.well-known/openid-configuration
+    status: 200
+    note: HTML soft-404 (content-type text/html), not an OIDC document.
+  specHunt:
+    harvested: 0
+    note: |
+      Probed /openapi.json, /openapi.yaml, /swagger.json, /swagger/v1/swagger.json,
+      /api-docs and /spec against howdengroup.com, parentportal.howdengroup.com
+      and tepfinx.com. Every response that returned HTTP 200 served
+      content-type text/html beginning with <!DOCTYPE html> — soft-404 shell
+      pages, not specifications. Zero OpenAPI or Swagger documents exist to
+      harvest. No openapi/ directory was created.
+  acordPosture:
+    phrase: ACORD GRLC digital accounting and invoicing standards live via ACORD
+      Solutions Group ADEPT gateway (XML + JSON), with Hiscox
+    confirmed: true
+    detail: |
+      This is the strongest ACORD signal in the UK broker tier and it is real,
+      not marketing. On 3 July 2025 ACORD and Howden announced that ACORD
+      Standards for digital accounting and invoicing are live and operational
+      in the UK retail insurance market — the first use of ACORD digital
+      accounting standards in the UK outside the specialty and (re)insurance
+      market. Howden operationalised the ACORD GRLC (Global Reinsurance & Large
+      Commercial) Standards for digital invoicing using ACORD Solutions Group's
+      ADEPT (ACORD Data Exchange Platform & Translator) as a messaging gateway
+      and portal, with retail insurer partner Hiscox responding to Howden's
+      digital invoices in real time through the ADEPT receiver portal. ADEPT is
+      cloud-native, supports both XML and JSON messaging, and connects
+      stakeholders over API architecture. Separately, ACORD has mapped its
+      messaging standards to Lloyd's API Factory placement specifications, the
+      London-market rail Howden's specialty business sits on.
+      No AL3 usage was found (AL3 is a US personal/commercial-lines agency
+      download format; Howden's UK and specialty footprint uses ACORD XML/GRLC
+      instead). No IVANS, Applied Epic or Vertafore AMS360 integration was
+      found on Howden's own properties.
+  insuranceVerbs:
+    quote:
+      exposed: partner-only
+      note: HowdenCAP Tepfin X submits and triages structured credit
+        submissions to carrier underwriting platforms over bilateral APIs.
+    bind:
+      exposed: partner-only
+      note: Announcements describe "presentation, negotiation, binding and
+        management of credit insurance contracts through APIs" with Allianz
+        Trade, AXA XL and Mosaic. No public documentation.
+    issue:
+      exposed: partner-only
+      note: Policy/contract management follows binding inside the same
+        bilateral partner integrations. Accounting and invoicing runs on ACORD
+        GRLC over ADEPT with Hiscox.
+    fnol:
+      exposed: false
+      note: No claims or FNOL API surface found, public or announced.
+    audience: partner-only (broker-to-carrier); no consumer-facing or
+      agent-self-serve API exists
+  authModel:
+    scheme: not publicly documented
+    note: |
+      No public auth documentation exists because no public API exists. The
+      observable surfaces are browser login walls — parentportal.howdengroup.com
+      and tepfinx.com both serve interactive sign-in applications. No OIDC or
+      OAuth authorization-server metadata is served at
+      /.well-known/openid-configuration or /.well-known/oauth-authorization-server
+      on any Howden host probed. Partner API credentials for the Tepfin X and
+      ADEPT integrations are issued under bilateral contract.
+  webhooks:
+    exists: false
+    note: No event catalog, webhook documentation, or AsyncAPI definition found.
+      Absence is itself the finding for this sector.
+  postman:
+    exists: false
+    note: No public Postman collection or workspace found for Howden Group.
+  graphql:
+    exists: false
+    note: No /graphql surface found on any probed Howden host.
+  grpc:
+    exists: false
+    note: No published .proto files found.
+  githubOrganization:
+    note: Two GitHub organizations exist with matching names — HowdenGroup
+      (created 2017, location UK) and howden-group (created 2019) — but both
+      report 0 public repositories and neither carries a description, blog URL
+      or any artifact tying it to the insurance broker rather than the
+      unrelated Howden engineering business. Not cited as a property.
+  transports:
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: Bilateral partner APIs between Tepfin X and carrier underwriting
+      platforms are described in announcements but never documented publicly.
+      No base URL is published.
+  - protocol: ACORD messaging (XML and JSON over ADEPT)
+    scheme: https
+    documented: false
+    note: ACORD GRLC digital accounting and invoicing messages exchanged with
+      Hiscox through ACORD Solutions Group's ADEPT gateway. Standard is public
+      via ACORD; Howden's endpoints are not.
+  - protocol: GraphQL
+    documented: false
+    note: None found.
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: None found.
+sources:
+- url: https://www.howdengroup.com/uk-en
+  type: Website
+  status: 200
+  note: UK corporate site. No developer or API navigation anywhere in the
+    information architecture.
+- url: https://www.howdengroup.com/uk-en/about-us
+  type: About
+  status: 200
+  note: Group identity — retail broking, specialty and reinsurance broking,
+    managing general agency underwriting.
+- url: https://www.howdengroup.com/uk-en/brokers
+  type: Website
+  status: 200
+  note: Broker-facing page; relationship-led, no technical integration surface.
+- url: https://www.acord.org/ACORD-about/acord-news/2025/07/03/acord-and-howden-pioneer-the-adoption-of-digital-invoicing-standards-in-the-uk-retail-insurance-market
+  type: Standards
+  status: 200
+  note: ACORD announcement, 3 July 2025 — ACORD digital accounting and
+    invoicing standards live with Howden via ADEPT, partner Hiscox.
+- url: https://www.reinsurancene.ws/acord-and-howden-partner-to-enhance-digital-accounting-and-invoicing-standards/
+  type: Press
+  status: 200
+  note: Names ACORD GRLC Standards, ADEPT as messaging gateway and portal,
+    XML and JSON messaging, modern API architecture, Hiscox as receiver.
+- url: https://www.howdengroup.com/news-and-insights/Howden-and-Allianz-Trade-partner-on-API-connectivity
+  type: Press
+  status: 200
+  note: 5 October 2022 — Tepfin X integrated with Allianz Trade Specialty
+    Credit's deal management and underwriting platform. Partner-only.
+- url: https://www.howdengroup.com/news-and-insights/howden-cap-and-axa-xl-collaborate-to-develop-structured-credit-apis
+  type: Press
+  status: 200
+  note: HowdenCAP and AXA XL structured credit APIs. "The only broker in the
+    London structured credit insurance market to have direct APIs with
+    insurers." No public docs, endpoints, or self-serve access.
+- url: https://www.howdengroup.com/news-and-insights/HowdenCAP-and-Mosaic-Insurance-launch-pioneering-insurtech-integration
+  type: Press
+  status: 200
+  note: Further bilateral Tepfin X carrier integration.
+- url: https://tepfinx.com/
+  type: Application
+  status: 200
+  note: Tepfin X placement application shell. No documentation served.
+- url: https://parentportal.howdengroup.com/
+  type: Portal
+  status: 200
+  note: Login wall titled "Howden Insurance Portal".
+actions:
+  openapiHarvested: false
+  specsSaved: 0
+  apisYmlEntries: 0
+  reason: |
+    apis[] is intentionally EMPTY. Howden Group operates real broker-to-carrier
+    APIs and a live ACORD GRLC/ADEPT accounting integration, but none of it is
+    publicly documented, none of it has a published base URL, and no OpenAPI,
+    Swagger, AsyncAPI, Postman, GraphQL or .proto artifact exists to harvest.
+    Listing an announcement page as an API reference would fabricate a surface
+    that does not exist. The honest record is: partner-gated, no public API.
