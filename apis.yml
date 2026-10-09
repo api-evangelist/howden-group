@@ -42,6 +42,9 @@ accessModel:
   trial: false
   try_now: false
   public: false
+  gated: partner
+  gated_source:
+  - tag:Partner Gated
   label: Unknown
   confidence: low
   source:
@@ -61,7 +64,6 @@ tags:
 - Credit Insurance
 - London Market
 - ACORD
-- Partner Gated
 tags_raw:
 - Insurance
 - United Kingdom
@@ -74,7 +76,6 @@ tags_raw:
 - Credit Insurance
 - London Market
 - ACORD
-- Partner Gated
 created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.23'
@@ -121,3 +122,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-tags-removed:
+- Partner Gated
