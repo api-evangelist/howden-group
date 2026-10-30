@@ -1,4 +1,4 @@
-# Howden Group (howden-group)
+# Howden Group
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,84 +64,85 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Howden Group Holdings is a London-headquartered, employee-owned international insurance intermediary founded in 1994, operating across retail insurance broking (Howden), specialty and reinsurance broking (Howden Re / Howden Specialty), and managing general agency underwriting (DUAL). Its home market is the United Kingdom and the Lloyd's of London subscription market, with lines of business spanning property and casualty, specialty, credit and political risk, marine, cyber, employee benefits, and reinsurance.
+Howden Group Holdings is a London-headquartered, employee-owned international insurance intermediary founded in 1994, operating across retail insurance broking (Howden), specialty and reinsurance broking (Howden Re / Howden Specialty), and managing general agency underwriting (DUAL). Its home market is the United Kingdom and the Lloyd's of London subscription market, with lines of business spanning property and casualty, specialty, credit and political risk, marine, cyber, employee benefits, and reinsurance. Howden's API posture is partner-gated and honestly recorded as such: no developer subdomain resolves (developer/developers/docs/api.howdengroup.com all fail DNS) and no /developers, /api or /partners path exists on howdengroup.com. What Howden does operate is real but private broker-to-carrier integration — HowdenCAP's Tepfin X structured credit placement application holds direct bilateral APIs with insurers (Allianz Trade, AXA XL, Mosaic), and in July 2025 Howden went live with ACORD GRLC digital accounting and invoicing standards over ACORD Solutions Group's ADEPT gateway with retail insurer partner Hiscox. None of that surface is self-serve, documented publicly, or accompanied by a downloadable OpenAPI definition. The only public web surfaces are marketing pages and login walls. Howden does publish two real machine-readable web artifacts — an RFC 9116 security.txt at www.howdengroup.com naming security@howdengrp.com, and an llms.txt overview blurb mirrored across the Howden Re and DUAL brands — plus a robots.txt Content-Signal directive permitting AI training, search and AI input use of its public content.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/howden-group/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/howden-group/refs/heads/main/apis.yml)
+**Areas:** Insurance · United Kingdom · Brokerage · Insurance Broking · Reinsurance · Specialty Insurance · Managing General Agent · Employee Benefits · Credit Insurance · London Market · ACORD
 
-## Tags
+## Howden Group on APIs.io
 
-- Insurance
-- United Kingdom
-- Broker
-- Insurance Broking
-- Reinsurance
-- Specialty Insurance
-- Managing General Agent
-- Employee Benefits
-- Credit Insurance
-- London Market
-- ACORD
-- Partner Gated
+Everything profiled for Howden Group is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/howden-group/](https://apis.io/providers/howden-group/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Security (2)
 
-**None.** Howden Group publishes no public, self-serve API and no downloadable API definition. This is the honest and expected outcome for a UK broker-intermediary: the United Kingdom has an FCA and a PRA but no open-insurance obligation, and the FCA's Open Finance work remains consultation rather than rule.
+Authentication, trust centre, and vulnerability disclosure.
 
-Probed on 2026-07-25:
+- [Howden Group Domain Security](https://apis.io/security/howden-group/howden-group-domain-security/)
+- [Howden Group Vulnerability Disclosure](https://apis.io/security/howden-group/howden-group-vulnerability-disclosure/)
 
-| Surface | Result |
-| --- | --- |
-| `developer.howdengroup.com` | DNS does not resolve |
-| `developers.howdengroup.com` | DNS does not resolve |
-| `docs.howdengroup.com` | DNS does not resolve |
-| `api.howdengroup.com` | DNS does not resolve |
-| `howdengroup.com/developers` | 404 |
-| `howdengroup.com/api` | 404 |
-| `howdengroup.com/developer` | 404 |
-| `howdengroup.com/partners` | 404 |
-| `howdengroup.com/integrations` | 404 |
-| `parentportal.howdengroup.com` | 200 — login wall, "Howden Insurance Portal" |
-| `tepfinx.com` | 200 — partner placement application shell, no docs |
-| `developer.dualinsurance.com` | 200 — cPanel placeholder, parked host |
+## Where to find this API
 
-No OpenAPI, Swagger, AsyncAPI, Postman collection, GraphQL schema, or `.proto` file was found. Every `/openapi.json`, `/swagger.json` and `/api-docs` probe that returned 200 served an HTML soft-404 shell.
-
-## What Howden actually integrates
-
-The integration work is real — it is simply bilateral and invisible from the outside.
-
-- **ACORD GRLC digital accounting and invoicing, live.** On 3 July 2025 ACORD and Howden announced that ACORD Standards for digital accounting and invoicing are live and operational in the UK retail insurance market — the first use of ACORD digital accounting standards in the UK outside the specialty and (re)insurance market. Howden operationalised the ACORD GRLC (Global Reinsurance & Large Commercial) Standards using ACORD Solutions Group's **ADEPT** (ACORD Data Exchange Platform & Translator) as a messaging gateway and portal, with retail insurer partner **Hiscox**. ADEPT is cloud-native and supports both XML and JSON messaging over API architecture.
-- **HowdenCAP / Tepfin X direct carrier APIs.** HowdenCAP markets itself as "the only broker in the London structured credit insurance market to have direct APIs with insurers," connecting its Tepfin X placement application to carrier underwriting platforms one partner at a time — Allianz Trade (October 2022), AXA XL, and Mosaic Insurance. These carry presentation, negotiation, binding and management of credit insurance contracts. Partner-only, contracted, undocumented publicly.
-- **London market modernization.** Howden (RKH Specialty) participated in Lloyd's closed Beta Group refining the Core Data Record under **Blueprint Two**, and partnered with **Whitespace** for digital placement. Blueprint Two, PPL and Whitespace are market infrastructure aimed at brokers and syndicates, not developers — which is precisely why the UK's best insurance API work stays invisible from outside.
-
-## Insurance API verbs
-
-| Verb | Exposure |
-| --- | --- |
-| Quote | Partner-only (Tepfin X submission intake and triage) |
-| Bind | Partner-only (bilateral carrier APIs) |
-| Issue | Partner-only (contract management; accounting via ACORD GRLC over ADEPT) |
-| FNOL / Claims | Not exposed — no claims API surface found |
-
-## Auth model
-
-Not publicly documented, because no public API exists. Observable surfaces are browser login walls. No OIDC or OAuth authorization-server metadata is served at `/.well-known/openid-configuration` or `/.well-known/oauth-authorization-server` on any Howden host probed. Partner API credentials for the Tepfin X and ADEPT integrations are issued under bilateral contract.
-
-## Links
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.howdengroup.com/uk-en)
-- [About Howden](https://www.howdengroup.com/uk-en/about-us)
-- [Howden Insurance Portal (login)](https://parentportal.howdengroup.com/)
-- [LinkedIn](https://www.linkedin.com/company/howden-broking-insurance)
-- [ACORD and Howden pioneer digital invoicing standards in the UK retail market](https://www.acord.org/ACORD-about/acord-news/2025/07/03/acord-and-howden-pioneer-the-adoption-of-digital-invoicing-standards-in-the-uk-retail-insurance-market)
-- [Howden CAP and AXA XL collaborate to develop structured credit APIs](https://www.howdengroup.com/news-and-insights/howden-cap-and-axa-xl-collaborate-to-develop-structured-credit-apis)
-- [Howden and Allianz Trade partner on API connectivity](https://www.howdengroup.com/news-and-insights/Howden-and-Allianz-Trade-partner-on-API-connectivity)
+- [Support](https://www.howdengroup.com/uk-en/contact-us)
+- [Blog](https://www.howdengroup.com/uk-en/news-insights)
+- [Security](https://www.howdengroup.com/.well-known/security.txt)
+- [Terms of service](https://www.howdengroup.com/howden-terms-and-conditions)
+- [Privacy policy](https://www.howdengroup.com/howden-privacy-data-protection-policy)
 
-## Review
+## API Evangelist rating
 
-See [review.yml](review.yml) for the full API Evangelist reviewer finding, every probe with its HTTP status, and the ACORD posture in detail.
+**Kin Score 16.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 21.1 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | yes |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/howden-group/](https://apis.io/providers/howden-group/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Howden Group: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/howden-group/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
